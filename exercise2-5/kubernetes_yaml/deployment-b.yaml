@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-b
+  name: deployment-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-b
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-b
+    spec:
+      containers:
+        - image: eficodeacademy/devopsacademyb:latest
+          name: devopsacademyb

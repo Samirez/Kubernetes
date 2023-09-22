@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cat-serve
+  name: cat-serve
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cat-serve
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cat-serve
+    spec:
+      containers:
+        - image: ghcr.io/eficode-academy/cat-serve:main
+          name: cat-serve
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SERVE_CATS
+              value: true

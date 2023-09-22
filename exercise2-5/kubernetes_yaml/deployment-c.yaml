@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-c
+  name: deployment-c
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-c
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-c
+    spec:
+      containers:
+        - image: eficodeacademy/devopsacademyc:latest
+          name: devopsacademyc
+          env:
+            - name: KEY
+              valueFrom:
+                configMapKeyRef:
+                # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                  name: deployment-c-configmap
+                # Specify the key associated with the value
+                  key: KEY

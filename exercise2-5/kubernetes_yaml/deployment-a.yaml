@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-a
+  name: deployment-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-a
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment-a
+    spec:
+      containers:
+        - image: eficodeacademy/devopsacademya:latest
+          name: devopsacademya
